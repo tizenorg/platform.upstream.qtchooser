@@ -1,0 +1,3 @@
+# We manually install /etc/xdg/qtchooser/5.conf
+addFilter("qtchooser.* non-conffile-in-etc /etc/xdg/qtchooser/5.conf")
+addFilter("qtchooser.* non-conffile-in-etc /etc/rpm/macros.qmake")
