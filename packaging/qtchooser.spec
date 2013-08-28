@@ -1,14 +1,11 @@
 
-%define git g97962d2
-
 Name: qtchooser
 Summary: Qt Chooser
-Version: 26
-Release: 3%{?dist}
-
-License: LGPLv2 or GPLv3
+Version: 31
+Release: 0%{?dist}
+License: LGPL-2.1 or GPL-3.0
 URL: http://macieira.org/qtchooser
-Source0: http://macieira.org/qtchooser/qtchooser-%{version}-%{git}.tar.gz
+Source0: %{name}-%{version}.tar.bz2
 Source1: macros.qmake
 Requires: qt-default
 
@@ -17,7 +14,7 @@ Requires: qt-default
 
 
 %prep
-%setup -q -n qtchooser-%{version}-%{git}
+%setup -q -n %{name}-%{version}.tar.bz2
 
 
 %build
@@ -29,10 +26,6 @@ make install INSTALL_ROOT=%{buildroot}
 mkdir -p %{buildroot}%{_sysconfdir}/xdg/qtchooser
 mkdir -p %{buildroot}%{_sysconfdir}/rpm/
 cp %SOURCE1 %{buildroot}%{_sysconfdir}/rpm/macros.qmake
-
-# Add configuration file for qt4
-echo "%{_libdir}/qt4/bin" > %{buildroot}%{_sysconfdir}/xdg/qtchooser/4.conf
-echo "%{_libdir}" >> %{buildroot}%{_sysconfdir}/xdg/qtchooser/4.conf
 
 # Add configuration file for qt5
 echo "%{_libdir}/qt5/bin" > %{buildroot}%{_sysconfdir}/xdg/qtchooser/5.conf
@@ -48,7 +41,6 @@ echo "%{_libdir}" >> %{buildroot}%{_sysconfdir}/xdg/qtchooser/5.conf
 %dir %{_sysconfdir}/xdg/qtchooser
 %{_sysconfdir}/rpm/macros.qmake
 %{_sysconfdir}/xdg/qtchooser/5.conf
-%{_sysconfdir}/xdg/qtchooser/4.conf
 %{_bindir}/qtchooser
 %{_bindir}/assistant
 %{_bindir}/designer
