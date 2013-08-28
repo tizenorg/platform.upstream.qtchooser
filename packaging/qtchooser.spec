@@ -1,46 +1,39 @@
 
-%define git g97962d2
-
 Name: qtchooser
 Summary: Qt Chooser
-Version: 26
-Release: 3%{?dist}
-
-License: LGPLv2 or GPLv3
+Group: Base/Libraries
+Version: 31
+Release: 0
+License: LGPL-2.1+ or GPL-3.0
 URL: http://macieira.org/qtchooser
-Source0: http://macieira.org/qtchooser/qtchooser-%{version}-%{git}.tar.gz
-Source1: macros.qmake
+Source0: %{name}-%{version}.tar.bz2
+Source1: qtchooser-rpmlintrc
+Source2: macros.qmake
 Requires: qt-default
 
 %description
-%{summary}
-
+The qtchooser package contains a wrapper used to select between Qt binary versions. It is only needed if both Qt4 and Qt5 are installed for access via the /usr/bin directory.
 
 %prep
-%setup -q -n qtchooser-%{version}-%{git}
+%setup -q -n %{name}-%{version}.tar.bz2
 
 
 %build
 make %{?_smp_mflags}
 
 %install
-make install INSTALL_ROOT=%{buildroot}
+%make_install
 
 mkdir -p %{buildroot}%{_sysconfdir}/xdg/qtchooser
 mkdir -p %{buildroot}%{_sysconfdir}/rpm/
-cp %SOURCE1 %{buildroot}%{_sysconfdir}/rpm/macros.qmake
+cp %SOURCE2 %{buildroot}%{_sysconfdir}/rpm/macros.qmake
 
-# Add configuration file for qt4
-echo "%{_libdir}/qt4/bin" > %{buildroot}%{_sysconfdir}/xdg/qtchooser/4.conf
-echo "%{_libdir}" >> %{buildroot}%{_sysconfdir}/xdg/qtchooser/4.conf
+mkdir -p %{buildroot}%{_sysconfdir}/xdg/qtchooser
 
 # Add configuration file for qt5
 echo "%{_libdir}/qt5/bin" > %{buildroot}%{_sysconfdir}/xdg/qtchooser/5.conf
 echo "%{_libdir}" >> %{buildroot}%{_sysconfdir}/xdg/qtchooser/5.conf
 
-## env vars
-#QT_SELECT
-#QTCHOOSER_RUNTOOL
 
 %files
 %defattr(-,root,root,-)
@@ -48,7 +41,6 @@ echo "%{_libdir}" >> %{buildroot}%{_sysconfdir}/xdg/qtchooser/5.conf
 %dir %{_sysconfdir}/xdg/qtchooser
 %{_sysconfdir}/rpm/macros.qmake
 %{_sysconfdir}/xdg/qtchooser/5.conf
-%{_sysconfdir}/xdg/qtchooser/4.conf
 %{_bindir}/qtchooser
 %{_bindir}/assistant
 %{_bindir}/designer
