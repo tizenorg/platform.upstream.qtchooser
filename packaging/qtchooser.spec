@@ -1,8 +1,7 @@
-
 Name: qtchooser
 Summary: Qt Chooser
 Group: Base/Libraries
-Version: 31
+Version: 39
 Release: 0
 License: LGPL-2.1+ or GPL-3.0
 URL: http://macieira.org/qtchooser
@@ -61,6 +60,7 @@ echo "%{_libdir}" >> %{buildroot}%{_sysconfdir}/xdg/qtchooser/5.conf
 %{_bindir}/qhelpconverter
 %{_bindir}/qhelpgenerator
 %{_bindir}/qmake
+%{_bindir}/qml
 %{_bindir}/qml1plugindump
 %{_bindir}/qmlbundle
 %{_bindir}/qmlmin
