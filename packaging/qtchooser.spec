@@ -75,4 +75,4 @@ echo "%{_libdir}" >> %{buildroot}%{_sysconfdir}/xdg/qtchooser/5.conf
 %{_bindir}/uic3
 %{_bindir}/xmlpatterns
 %{_bindir}/xmlpatternsvalidator
-
+%{_datadir}/man/man1/qtchooser.1.gz
