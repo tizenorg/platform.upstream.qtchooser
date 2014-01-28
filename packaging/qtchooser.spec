@@ -60,6 +60,7 @@ echo "%{_libdir}" >> %{buildroot}%{_sysconfdir}/xdg/qtchooser/5.conf
 %{_bindir}/qhelpconverter
 %{_bindir}/qhelpgenerator
 %{_bindir}/qmake
+%{_bindir}/qtpaths
 %{_bindir}/qml
 %{_bindir}/qml1plugindump
 %{_bindir}/qmlbundle
@@ -69,6 +70,7 @@ echo "%{_libdir}" >> %{buildroot}%{_sysconfdir}/xdg/qtchooser/5.conf
 %{_bindir}/qmlscene
 %{_bindir}/qmltestrunner
 %{_bindir}/qmlviewer
+%{_bindir}/qmlimportscanner
 %{_bindir}/qtconfig
 %{_bindir}/rcc
 %{_bindir}/uic
