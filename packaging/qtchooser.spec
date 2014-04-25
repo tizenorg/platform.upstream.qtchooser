@@ -8,6 +8,7 @@ URL: http://macieira.org/qtchooser
 Source0: %{name}-%{version}.tar.bz2
 Source1: qtchooser-rpmlintrc
 Source2: macros.qmake
+Source1001: %{name}.manifest
 Requires: qt-default
 
 %description
@@ -15,7 +16,7 @@ The qtchooser package contains a wrapper used to select between Qt binary versio
 
 %prep
 %setup -q -n %{name}-%{version}.tar.bz2
-
+cp %{SOURCE1001} .
 
 %build
 make %{?_smp_mflags}
@@ -36,6 +37,7 @@ echo "%{_libdir}" >> %{buildroot}%{_sysconfdir}/xdg/qtchooser/5.conf
 
 %files
 %defattr(-,root,root,-)
+%manifest %{name}.manifest
 %doc LGPL_EXCEPTION.txt LICENSE.GPL LICENSE.LGPL
 %dir %{_sysconfdir}/xdg/qtchooser
 %{_sysconfdir}/rpm/macros.qmake
