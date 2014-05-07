@@ -74,6 +74,7 @@ echo "%{_libdir}" >> %{buildroot}%{_sysconfdir}/xdg/qtchooser/5.conf
 %{_bindir}/qmlviewer
 %{_bindir}/qmlimportscanner
 %{_bindir}/qtconfig
+%{_bindir}/qtdiag
 %{_bindir}/rcc
 %{_bindir}/uic
 %{_bindir}/uic3
