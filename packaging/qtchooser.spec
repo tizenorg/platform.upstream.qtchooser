@@ -1,7 +1,7 @@
 Name: qtchooser
 Summary: Qt Chooser
 Group: Base/Libraries
-Version: 39
+Version: 39.1.7985f775fb
 Release: 0
 License: LGPL-2.1+ or GPL-3.0
 URL: http://macieira.org/qtchooser
